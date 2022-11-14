@@ -32,4 +32,4 @@ d) Then it will ask for file name, enter file name with extension i.e csv
 
 e) If file is uploaded code will exit or any exception will be printed.
 
-
+To see results , if runserver is working, open the html file frontend/index.html, paginated results of 5 with search available 
