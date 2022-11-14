@@ -17,7 +17,19 @@ c) python manage.py runserver, will give you migrate warning
 d) python manage.py migrate
 
 To upload data to database the scripts folder load.py file,
-change the lines as 
-  def run(db_no=<no_of_table> , file_name=<name_of_csv_file>):
-the list of database_no  start from 0-4 corresponding to dbs = [CustomerCompanies,Customers, Orders, OrderItems,Deliveries]
-and in the run function uncomment the line required
+
+a) place the csv files in ~/scripts/test_data folder
+b) In terminal use the command python manage.py runscript load
+c) It will ask the input to select the data table as 
+
+    Select Data Table to load data: 
+    0) CustomerCompanies, 1) Customers, 2) Orders, 3) OrderItems, 4) Deliveries
+
+d) Then it will ask for file name, enter file name with extension i.e csv
+
+    Enter file name in test_data folder: 
+    File Name: customer_companies.csv
+
+e) If file is uploaded code will exit or any exception will be printed.
+
+
