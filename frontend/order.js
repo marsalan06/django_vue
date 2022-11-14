@@ -23,17 +23,7 @@ const order = {template: `
         </th>
     </tr>
 </thead>
-<tbody>
-    <tr v-for="order in orders">
-        <td>{{order.order_id__order_name}}</td>
-        <td>{{order.order_id__customer_id__company_id__company_name}}</td>
-        <td>{{order.order_id__customer_id__user_id}}</td>
-        <td>{{order.date}}</td>
-        <td>{{order.deliveries__delivered_quantity || 0}}</td>
-        <td>{{order.quantity}}</td>
 
-    </tr>
-</tbody>
 </table>
 `,
 
@@ -48,7 +38,35 @@ methods:{
         .then((response)=>{
             // console.log(response.data);
             data = JSON.parse(response.data)
+            
             this.orders = data;
+            console.log(typeof(data))
+            console.log(data)
+            
+            function getColumns(){
+                for(var i = 0; i < data.length; i++){
+                  let columnsArray = [];
+                  var keys = Object.keys(data[i]);
+                  for(k in Object.keys(data[i])){
+                    if(data[i].hasOwnProperty(keys[k])){
+                      columnsArray.push({
+                          "data":keys[k]
+                      });
+                    }
+                  }
+                  return columnsArray;
+                }
+            }
+            var table = $('#my-table').DataTable({
+                columnDefs: [{
+                    "defaultContent": "-",
+                    "targets": "_all"
+                  }],                
+                "lengthChange": false,
+                "columns": getColumns(),
+                "data": data,
+                "pageLength" : 5 
+          });         
         });
     },
     nextPage () {
@@ -62,12 +80,6 @@ methods:{
 },
 mounted:function(){
     this.getnewData();
+    }
 }
-}
-
-
-    console.log("================")
-    
-    console.log("==========end====")
- 
 
