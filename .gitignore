@@ -1,0 +1,5 @@
+venv/
+backend/__pycache__/
+backend/migrations/__pycache__/
+djangovue/__pycache__/
+scripts/__pycache__/
