@@ -13,13 +13,14 @@ const order = {template: `
             Customer Name
         </th>
         <th>
-            Order Date
-        </th>
-        <th>
             Delivered Amount
+            
         </th>
         <th>
             Total Amount
+        </th>
+        <th>
+            Order Date
         </th>
     </tr>
 </thead>
